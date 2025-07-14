@@ -1,0 +1,50 @@
+[
+    {
+        "nombre": "María González",
+        "empresa": "CEO de TechStart",
+        "opinion": "Excelente servicio y atención personalizada. Superaron todas mis expectativas y el resultado final fue increíble.",
+        "rating": 5
+    },
+    {
+        "nombre": "Carlos Rodríguez",
+        "empresa": "Director de Marketing",
+        "opinion": "Profesionales altamente capacitados. Su dedicación y creatividad hicieron la diferencia en nuestro proyecto.",
+        "rating": 5
+    },
+    {
+        "nombre": "Ana Martínez",
+        "empresa": "Fundadora de CreativeSpace",
+        "opinion": "Trabajar con ellos fue una experiencia fantástica. Cumplieron todos los plazos y la calidad del trabajo es excepcional.",
+        "rating": 4
+    },
+    {
+        "nombre": "Jorge Silva",
+        "empresa": "Gerente de Ventas",
+        "opinion": "Recomiendo sus servicios sin dudarlo. Muy profesionales, creativos y siempre dispuestos a ayudar.",
+        "rating": 5
+    },
+    {
+        "nombre": "María González",
+        "empresa": "CEO de TechStart",
+        "opinion": "Excelente servicio y atención personalizada. Superaron todas mis expectativas y el resultado final fue increíble.",
+        "rating": 5
+    },
+    {
+        "nombre": "Carlos Rodríguez",
+        "empresa": "Director de Marketing",
+        "opinion": "Profesionales altamente capacitados. Su dedicación y creatividad hicieron la diferencia en nuestro proyecto.",
+        "rating": 5
+    },
+    {
+        "nombre": "Ana Martínez",
+        "empresa": "Fundadora de CreativeSpace",
+        "opinion": "Trabajar con ellos fue una experiencia fantástica. Cumplieron todos los plazos y la calidad del trabajo es excepcional.",
+        "rating": 4
+    },
+    {
+        "nombre": "Jorge Silva",
+        "empresa": "Gerente de Ventas",
+        "opinion": "Recomiendo sus servicios sin dudarlo. Muy profesionales, creativos y siempre dispuestos a ayudar.",
+        "rating": 5
+    }
+]
