@@ -142,23 +142,7 @@
         z-index: 1; /* Asegura que el texto esté sobre el video */
     }
     
-    /*Efectos de animacion en el banner*/
-    .banner-content h1,
-    .banner-content h2,
-    .banner-content a {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeUp 1s ease-out forwards;
-    }
 
-    /* Retrasos escalonados para efecto secuencial */
-    .banner-content h2 {
-        animation-delay: 0.3s;
-    }
-
-    .banner-content a {
-        animation-delay: 0.6s;
-    }
 
     /* Keyframes para el efecto */
     @keyframes fadeUp {
@@ -1474,6 +1458,153 @@
 
 
 /*Responsive*/
+    /*PC*/
+    @media (max-width: 2400px){            
+      /*NavBar*/ 
+          #logo {
+              height: 100px;  
+          }   
+          header nav.navbar .nav-link {
+            font-weight: 700;
+            font-size: 1.2rem;
+          }
+      /* Banner */
+          .containerB {
+              height: 1050px;
+          }      
+      /*Seccion Info Uno*/
+          .infoC{
+            font-size: 1.4rem;
+          }
+
+        /*Seccion Info Dos*/
+          .infoO{
+            font-size: 1.4rem;
+          }
+        
+
+        /* Integrantes */
+          .containerE {
+              max-width: 2000px;
+              margin: 0 auto;
+              padding: 20px 10px;
+          }
+          .member-card {
+              padding: 50px;
+              width: 450px;
+          }
+          .member-image {
+              width: 150px;
+              height: 150px;
+          }
+          .member-name {
+              font-size: 1.5rem;
+          }
+          .member-specialty {
+              font-size: 1.3rem;
+              font-weight: 700;
+          }     
+          .member-info {
+              font-size: 1.2em;
+              font-weight: bold;
+          }
+
+        /* Preguntas frecuentes*/
+          #preguntas .accordion-item {
+            width: 150%;
+          }
+          #preguntas .accordion-button {
+              font-size: 1.5rem;
+              margin-left: -200px;
+              padding-left: 5rem;
+              padding-right: 5rem;
+          }
+          #preguntas .accordion-header {
+              margin-bottom: 0.5rem;
+          }
+          #preguntas .accordion-body {
+              margin-left: -200px;
+              padding-top: 25px;
+              padding-bottom: 25px; 
+              width: 100%;        
+          }
+           
+
+
+      /* Contacto */
+          .contacto {
+            color: #fff;
+            padding: 6rem 0;
+            position: relative;
+            background-color: var(--background-blue);
+            background-attachment: fixed; /* Efecto de parallax */
+          }
+          .contacto h2 {
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+          }
+          .contacto p {
+            color: #dedede;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+          }
+          .contacto form .form-floating > .form-control {
+            border-radius: var(--border-radius);
+            background-color: rgba(255 255 255 / 0.9);
+            color: var(--primary-light);
+            font-weight: 600;
+            transition: box-shadow var(--transition-speed), border-color var(--transition-speed);
+          }
+          .contacto form .form-floating > .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            background-color: #fff;
+            color: var(--secondary-color);
+          }
+          .contacto form label {
+            color: var(--primary-dark);
+            font-weight: 700;
+          }
+          .contacto form .btn-warning {
+            background-color: var(--primary-dark);
+            border-radius: var(--border-radius);
+            color: var(--secondary-color);
+            border: none;
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding: 0.8rem 2rem;
+            transition: all var(--transition-speed);
+            text-transform: uppercase;
+          }
+          .contacto form .btn-warning:hover,
+          .contacto form .btn-warning:focus {
+            background-color: var(--primary-dark);
+            box-shadow: 0 10px 25px var(--primary-light);
+            color: white;
+          }
+          .contacto .form-floating > label {
+            left: 1.5rem; /* mueve el label a la derecha */
+          }
+          .contacto > .container {
+            position: relative;
+            z-index: 2;
+          }
+          .contacto::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+          }
+    }
+
+
+
+
+
     /*Laptop*/
     @media (max-width: 1600px){
           /* Banner */
