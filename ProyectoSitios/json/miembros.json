@@ -1,0 +1,19 @@
+{
+    "team": [
+        {
+            "image": "../assets/img/perfilGarcesBrocal.jpeg",
+            "name": "Garces Brocal María P.",
+            "specialty": "Frontend Developer",
+            "info": "Actualmente me encuentro en el segundo año de la Tecnicatura Universitaria en Web en la UNSL. Tengo conocimientos en desarrollo frontend (HTML, CSS, JavaScript, JSON), programación en distintos lenguajes, usabilidad y diseño gráfico.",
+            "linkedin": "https://linkedin.com/in/alexnebula"
+        },
+        {
+            "image": "../assets/img/perfilPonce.jpeg",
+            "name": "Ponce Santiago Ulises",
+            "specialty": "Frontend Developer, Graphic Design",
+            "info": "Trabajo con el paquete Adobe (Illustrator, Photoshop, entre otros) y tengo conocimientos en desarrollo frontend con HTML, CSS y JavaScript, lo que me permite integrar el diseño visual con entornos web de manera efectiva.",
+            "linkedin": "https://linkedin.com/in/lunastellar"
+
+        }
+    ]
+}

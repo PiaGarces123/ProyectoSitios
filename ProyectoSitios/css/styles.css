@@ -357,7 +357,8 @@
 
         .member-card {
             background: rgba(40, 48, 216, 0.15);
-            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
+            backdrop-filter: blur(15px);            
             border: 1px solid rgba(40, 48, 216, 0.2);
             border-radius: 20px;
             padding: 30px;
