@@ -93,200 +93,53 @@ function setupOscillatingDots() {
   });
 })();
 
-/*
 
-// Carrusel de testimonios
-        let currentSlide = 0;
-        const totalSlides = 2;
-        const carousel = document.getElementById('testimonials-carousel');
-        const indicators = document.querySelectorAll('.indicator');
-        const counter = document.getElementById('carousel-counter');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
 
-        function updateCarousel() {
-            const translateX = -currentSlide * 100;
-            carousel.style.transform = `translateX(${translateX}%)`;
-            
-            // Actualizar indicadores
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-            
-            // Actualizar contador
-            counter.textContent = `${currentSlide + 1} de ${totalSlides}`;
-            
-            // Actualizar botones
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === totalSlides - 1;
-        }
+/* INTEGRANTES*/
+// Función para crear las cards de los miembros
+function createMemberCards(data) {
+    const teamGrid = document.getElementById('teamGrid');
+    teamGrid.innerHTML = '';
 
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateCarousel();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-            }
-        }
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
-        }
-
-        // Event listeners
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => goToSlide(index));
-        });
-
-        // Auto-play (opcional)
-        let autoPlayInterval;
+    data.team.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'member-card';
         
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(() => {
-                if (currentSlide < totalSlides - 1) {
-                    nextSlide();
-                } else {
-                    currentSlide = 0;
-                    updateCarousel();
-                }
-            }, 5000);
+        card.innerHTML = `
+            <img src="${member.image}" alt="${member.name}" class="member-image"
+                onerror="this.src='https://via.placeholder.com/120x120/4ecdc4/ffffff?text=${member.name.charAt(0)}'">
+            <h3 class="member-name">${member.name}</h3>
+            <p class="member-specialty">${member.specialty}</p>
+            <p class="member-info">${member.info}</p>
+            <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+            </a>
+        `;
+        
+        teamGrid.appendChild(card);
+    });
+}
+
+// Función para cargar el JSON externo
+async function loadTeamData() {
+    try {
+        const response = await fetch('../json/miembros.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const data = await response.json();
+        createMemberCards(data);
+    } catch (error) {
+        console.error('Error cargando miembros:', error);
+        document.getElementById('teamGrid').innerHTML = 
+            '<div class="loading">Error al cargar los datos del equipo.</div>';
+    }
+}
 
-        function stopAutoPlay() {
-            clearInterval(autoPlayInterval);
-        }
-
-        // Inicializar carrusel
-        updateCarousel();
-        startAutoPlay();
-
-        // Pausar auto-play cuando el usuario interactúa
-        const carouselContainer = document.querySelector('.carousel-container');
-        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
-        carouselContainer.addEventListener('mouseleave', startAutoPlay);
-
-        // Soporte para gestos táctiles (mobile)
-        let startX = 0;
-        let currentX = 0;
-        let isDragging = false;
-
-        carouselContainer.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-            stopAutoPlay();
-        });
-
-        carouselContainer.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            currentX = e.touches[0].clientX;
-        });
-
-        carouselContainer.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            
-            const diff = startX - currentX;
-            const threshold = 50;
-            
-            if (Math.abs(diff) > threshold) {
-                if (diff > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-            }
-            
-            startAutoPlay();
-        });
-
-        // Animación suave para las tarjetas cuando aparecen en viewport
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(30px)';
-                    entry.target.style.transition = 'all 0.6s ease';
-                    
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                }
-            });
-        }, observerOptions);
-
-        // Observar todas las tarjetas
-        document.querySelectorAll('.testimonial-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Efecto de hover mejorado para las estrellas
-        document.querySelectorAll('.testimonial-card').forEach(card => {
-            const stars = card.querySelectorAll('.star');
-            
-            card.addEventListener('mouseenter', () => {
-                stars.forEach((star, index) => {
-                    setTimeout(() => {
-                        star.style.transform = 'scale(1.2)';
-                        star.style.transition = 'transform 0.1s ease';
-                    }, index * 50);
-                });
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                stars.forEach(star => {
-                    star.style.transform = 'scale(1)';
-                });
-            });
-        });
-
-        // Animación de números contador
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                const target = counter.textContent;
-                const numericTarget = parseInt(target.replace(/\D/g, ''));
-                const suffix = target.replace(/\d/g, '');
-                let current = 0;
-                const increment = numericTarget / 50;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= numericTarget) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current) + suffix;
-                    }
-                }, 30);
-            });
-        }
-
-        // Iniciar animación de contadores cuando la sección sea visible
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        statsObserver.observe(document.querySelector('.stats-section'));
-     */
+// Inicializar cuando cargue el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    loadTeamData();
+});
