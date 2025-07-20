@@ -665,7 +665,7 @@
         font-size:40px;
         text-align:center;
         text-decoration:none;
-        color:#404040;
+        color:var(--background-light);
         margin: 0 30px;
         transition:.5s;
       }
@@ -675,7 +675,7 @@
       .redesLI a span {
           position: absolute;
           transition: transform 0.5s, background 0.5s;
-          background: #404040;
+          background: var(--background-light);
       }
 
       .top-border,
