@@ -32,7 +32,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#banner" aria-label="Ir al banner principal">
+                <a class="navbar-brand" href="./index.html #banner" aria-label="Ir al banner principal">
                     <img src="../assets/img/LogoB.png" id="logo" alt="Logo SWS" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -49,7 +49,7 @@
                             <a class="nav-link fw-bold" href="#works">Nuestros Trabajos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-bold" href="#AboutUs">Acerca de Nosotros</a>
+                            <a class="nav-link fw-bold" href="#oscillating-dots">Acerca de Nosotros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="#contact">Contacto</a>
@@ -57,107 +57,110 @@
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="#preguntas">Preguntas Frecuentes</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="#Opin">Opiniones</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    
-    <div class="opiniones">
-        <div class="bubble-containerO">
-            <div class="bubble1"></div>
-            <div class="bubble1"></div>
-            <div class="bubble1"></div>
-            <div class="bubble1"></div>
-            <div class="bubble1"></div>
-            <div class="bubble1"></div>
-            <div class="bubble2"></div>
-            <div class="bubble2"></div>
-            <div class="bubble2"></div>
-            <div class="bubble2"></div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <!--Opiniones-->
-                <div class="col-12">
-                    <div class="titulo">
-                        <h1>Opiniones de Nuestros Clientes</h1>
-                        <p>Descubre lo que dicen sobre nosotros</p>
-                    </div>
+    <div class="Opin">
+        <div class="opiniones" id="Op">
+            <div class="bubble-containerO">
+                <div class="bubble1"></div>
+                <div class="bubble1"></div>
+                <div class="bubble1"></div>
+                <div class="bubble1"></div>
+                <div class="bubble1"></div>
+                <div class="bubble1"></div>
+                <div class="bubble2"></div>
+                <div class="bubble2"></div>
+                <div class="bubble2"></div>
+                <div class="bubble2"></div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <!--Opiniones-->
+                    <div class="col-12">
+                        <div class="titulo">
+                            <h1>Opiniones de Nuestros Clientes</h1>
+                            <p>Descubre lo que dicen sobre nosotros</p>
+                        </div>
 
-                    <div class="carousel" id="carousel">
-                        <!-- Aquí el JS insertará los slides -->
+                        <div class="carousel" id="carousel">
+                            <!-- Aquí el JS insertará los slides -->
+                        </div>
+                        <div class="carousel-buttons text-center">
+                            <button class="carousel-controls prev" onclick="previousSlide()">‹</button>
+                            <button class="carousel-controls next" onclick="nextSlide()">›</button>
+                        </div>
                     </div>
-                    <div class="carousel-buttons text-center">
-                        <button class="carousel-controls prev" onclick="previousSlide()">‹</button>
-                        <button class="carousel-controls next" onclick="nextSlide()">›</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="separacion">
+            <div class="estrellas">
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+                <div class="estrella"></div>
+            </div>
+        </div>
+
+        <svg viewBox="0 0 120 28" preserveAspectRatio="none" class="onda">
+            <path d="M0,0 C30,20 90,0 120,20 L120,30 L0,30 Z" fill="#344899"></path>
+        </svg>  
+
+        <div class="subirOp">
+            <div class="container subirOp">
+                <div class="row">
+                    <!--Agregar Opinion-->
+                    <div class="col-12 form-container">
+                        <h2>Agregar Nueva Opinión</h2>
+                        <form id="opinionForm">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="empresa">Empresa/Cargo:</label>
+                                <input type="text" id="empresa" name="empresa" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="opinion">Opinión:</label>
+                                <textarea id="opinion" name="opinion" required placeholder="Comparte tu experiencia..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rating">Calificación:</label>
+                                <select id="rating" name="rating" required>
+                                    <option value="">Selecciona una calificación</option>
+                                    <option value="1">1 estrella</option>
+                                    <option value="2">2 estrellas</option>
+                                    <option value="3">3 estrellas</option>
+                                    <option value="4">4 estrellas</option>
+                                    <option value="5">5 estrellas</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">Agregar Opinión</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="separacion">
-        <div class="estrellas">
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-            <div class="estrella"></div>
-        </div>
-    </div>
-
-    <svg viewBox="0 0 120 28" preserveAspectRatio="none" class="onda">
-        <path d="M0,0 C30,20 90,0 120,20 L120,30 L0,30 Z" fill="#344899"></path>
-    </svg>  
-
-    <div class="subirOp">
-        <div class="container subirOp">
-            <div class="row">
-                <!--Agregar Opinion-->
-                <div class="col-12 form-container">
-                    <h2>Agregar Nueva Opinión</h2>
-                    <form id="opinionForm">
-                        <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="empresa">Empresa/Cargo:</label>
-                            <input type="text" id="empresa" name="empresa" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="opinion">Opinión:</label>
-                            <textarea id="opinion" name="opinion" required placeholder="Comparte tu experiencia..."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="rating">Calificación:</label>
-                            <select id="rating" name="rating" required>
-                                <option value="">Selecciona una calificación</option>
-                                <option value="1">1 estrella</option>
-                                <option value="2">2 estrellas</option>
-                                <option value="3">3 estrellas</option>
-                                <option value="4">4 estrellas</option>
-                                <option value="5">5 estrellas</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="btn-submit">Agregar Opinión</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
     <!--Footer 1-->
     <footer class="footer-1 text-white" role="contentinfo">
         <div class="container py-2" id="contain">
@@ -180,20 +183,20 @@
                             <a class="foot-link px-0 fw-bold" href="#works">Nuestros Trabajos</a>
                         </li>
                         <li class="mb-2">
-                            <a class="foot-link px-0  fw-bold" href="#oscillating-dots">Acerca De Nosotros</a>
+                            <a class="foot-link px-0  fw-bold" href="./index.html#oscillating-dots">Acerca De Nosotros</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-3 text-center">
                     <ul class="flex-column list-unstyled text-uppercase">
                         <li class="mb-2">
-                            <a class="foot-link px-0  fw-bold" href="#contact">Contacto</a>
+                            <a class="foot-link px-0  fw-bold" href="./index.html#contact">Contacto</a>
                         </li>
                         <li class="mb-2">
-                            <a class="foot-link px-0  fw-bold" href="#contacto">Opiniones</a>
+                            <a class="foot-link px-0  fw-bold" href="#Op">Opiniones</a>
                         </li>
                         <li class="mb-2">
-                            <a class="foot-link px-0 fw-bold" href="#preguntas">Preguntas Frecuentes</a>
+                            <a class="foot-link px-0 fw-bold" href="./index.html#preguntas">Preguntas Frecuentes</a>
                         </li>
                     </ul>
                 </div>
@@ -241,7 +244,7 @@
     <!-- Footer 2-->
     <footer id="footer-2" class="text-center">
         &copy; Diseño y Desarrollo a cargo de 
-         <a href="#contact">Studio Web Space</a>. Todos los derechos reservados.
+         <a href="./index.html#contact">Studio Web Space</a>. Todos los derechos reservados.
     </footer>
 
     <!-- Bootstrap JS -->
