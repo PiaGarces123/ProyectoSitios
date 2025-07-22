@@ -1764,6 +1764,39 @@
             }
         }
 
+/*Seccion de Trabajos*/
+        .trabajos {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(208, 213, 255, 0.5) 0%, rgba(43, 51, 85, 0.5) 50%, rgba(3, 11, 43, 0.815) 100%);
+            overflow: hidden; /* importante para cortar el svg si se sale */
+        }
+
+        .trabajos .bubble-containerO{
+          z-index: 11;
+        }
+        .trabajos .titulo{
+          position: relative;
+          z-index: 12;
+        }
+        .trabajos svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 0; /* por debajo del fondo degradado */
+        }
+
+        .trabajos::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(208, 213, 255, 0.5) 0%, rgba(43, 51, 85, 0.5) 50%, rgba(3, 11, 43, 0.815) 100%);
+            z-index: 1;
+        }
 
 
 
