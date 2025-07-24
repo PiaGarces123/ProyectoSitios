@@ -1790,7 +1790,7 @@
 
 /*Responsive*/
     /*PC*/
-    @media (max-width: 1400px){            
+    @media (min-width: 1400px){            
       /*NavBar*/ 
           #logo {
               height: 100px;  
@@ -1967,9 +1967,9 @@
 
 
 
-
+/*ESTO TIENE QUE DESAPARECEEEEEEEEEEEEEER*/
     /*Laptop*/
-    @media (max-width: 1600px){
+    @media (max-width: 1399px){
           /* Banner */
         .containerB {
             max-width: 100vh;
