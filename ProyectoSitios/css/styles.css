@@ -2069,6 +2069,7 @@
                 inset 0 0 20px rgba(147, 112, 219, 0.1);
             transition: all 0.4s ease;
             z-index: 10;
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
             backdrop-filter: blur(10px);
         }
         .carousel-nav:hover {
