@@ -27,19 +27,19 @@
     }
 
     body {
-        font-family: "Alumni Sans SC", sans-serif;
+        font-family: "Roboto", sans-serif;
         font-weight: 400; 
     }
 
     .titulo-principal {
-        font-family: "Alumni Sans SC", sans-serif;
+        font-family: "Roboto", sans-serif;
         font-optical-sizing: auto;
         font-weight: 600;
         font-style: normal;
     }
 
     h1, h2, h3, h4, h5 {
-        font-family: "Alumni Sans SC", sans-serif;
+        font-family: "Roboto", sans-serif;
         margin-bottom: 1rem;
         font-weight: 700;
     }
