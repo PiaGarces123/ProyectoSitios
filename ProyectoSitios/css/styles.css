@@ -1362,6 +1362,7 @@
       z-index: 1;
   }
 
+
   .onda {
       position: absolute;
       bottom: -55px;
@@ -1445,7 +1446,7 @@
       margin: 0 auto; /* centrado horizontal con menos margen inferior */
       max-width: 1000px; /* achica el cuadro */
       width: 100%;  
-      margin-bottom: 10%;
+
   }
 
   .form-container h2 {
@@ -1486,8 +1487,8 @@
     }
 
     .form-group textarea {
-        padding: 0.5rem 0.75rem;  /* antes 1rem */
-        min-height: 3rem;         /* antes 5rem o 2rem */
+        padding: 0.5rem 0.75rem;
+        min-height: 4rem;
         resize: vertical;
     }
 
@@ -1497,11 +1498,7 @@
       outline: none;
       border-color: var(--primary-light);
   }
-
-  .form-group textarea {
-      resize: vertical;
-      min-height: 2rem;
-  }
+  
 
   .btn-submit {
       background: linear-gradient(90deg, #7f8ed3, #5a63b8);
@@ -1793,7 +1790,7 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; }
@@ -1812,11 +1809,12 @@
                 radial-gradient(ellipse at top, #1e0533 0%, #110a1f 50%, #000000 100%),
                 radial-gradient(ellipse at bottom, #2d1b69 0%, #0f0f23 50%, #000000 100%);
             flex: 1;
-            min-height: 200vh;
+            min-height: 100vh;
             padding: 2rem 0;
             position: relative;
             overflow-x: hidden;
             font-family: "Alumni Sans SC", sans-serif;
+            overflow: visible;
             height: auto;
         }
 
@@ -1890,7 +1888,7 @@
         .carousel-container {
             position: relative;
             margin-top: 2rem;
-            margin-bottom: 15%;
+            margin-bottom: 1rem;
         }
         .carousel-wrapper {
             overflow: hidden;
