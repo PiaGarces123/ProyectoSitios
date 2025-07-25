@@ -18,6 +18,9 @@
 }
 
 /* Reset y base */
+    *{
+        font-family: "Poppins", sans-serif !important;
+    }
     html, body {
         height: 100%;
         margin: 0;
@@ -27,19 +30,19 @@
     }
 
     body {
-        font-family: "Roboto", sans-serif;
+        font-family: "Poppins", sans-serif;
         font-weight: 400; 
     }
 
     .titulo-principal {
-        font-family: "Roboto", sans-serif;
+        font-family: "Poppins", sans-serif;
         font-optical-sizing: auto;
         font-weight: 600;
         font-style: normal;
     }
 
     h1, h2, h3, h4, h5 {
-        font-family: "Roboto", sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-bottom: 1rem;
         font-weight: 700;
     }
@@ -142,7 +145,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-          border: none;
+        border: none;
         object-fit: cover;
         z-index: -1; /* Para que quede detrás del contenido */
     }
@@ -1004,8 +1007,7 @@
     border-radius: 8px;
     background-color: rgba(12, 34, 81, 0.611);
     box-shadow: 2px 5px 20px rgba(60, 55, 90, 0.9);
-    padding: 0rem 3rem;
-    margin-left: 2rem;
+    padding: 0rem 3rem;   
     margin-top: 5%;
 
     line-height: 0;          /* Altura de línea controlada */
@@ -2362,10 +2364,7 @@
             
       
 
-          /*Contacto*/
-         .contacto p {
-            margin-left: 6.5rem;
-          }
+          /*Contacto*/       
 
     }
 
