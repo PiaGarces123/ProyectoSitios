@@ -1521,8 +1521,9 @@
 /*Seccion de Servicios*/  
         .servicios {
             background: linear-gradient(135deg, #030b2b 0%, #13133d 50%, #1b2d6d 100%);
-            min-height: 100vh;
+            min-height: 335vh;
             overflow-x: hidden;
+            scrollbar-width: none;
         }
 
         .stars {
@@ -1577,7 +1578,7 @@
         .section-title p {
             margin-top: 1rem;
             font-size: 1rem;
-            opacity: 0.9;
+            opacity: 1;
             font-weight: bold;
         }
 
@@ -1824,7 +1825,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 175%;
+            height: 1%;
             background-image: 
                 radial-gradient(2px 2px at 20px 30px, #fff, transparent),
                 radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
