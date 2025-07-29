@@ -44,7 +44,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto text-uppercase">
+                    <ul class="navbar-nav ms-auto text-uppercase text-center">
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="./servicios.html">Servicios</a>
                         </li>
@@ -207,7 +207,7 @@
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                       Sí. Podemos encargarnos del mantenimiento técnico, actualizaciones, backups y soporte general para que tu sitio funcione correctamente.
+                                        Sí. Podemos encargarnos del mantenimiento técnico, actualizaciones, backups y soporte general para que tu sitio funcione correctamente.
                                     </div>
                                 </div>
                             </div>
@@ -275,13 +275,14 @@
                         <div class="invalid-tooltip">Es necesario poner el E-mail</div>
                     </div>
                     <div class="col-lg-6 form-floating">
-                        <input type="tel" class="form-control" id="C_whatsA" name="C_whatsA"
-                            pattern="^\+?\d{10,15}$"
-                            placeholder="+5491123456789" required />
-                        <label for="C_whatsA">WhatsApp</label>
-                        <div class="valid-tooltip">Campo válido</div>
-                        <div class="invalid-tooltip">Es necesario poner el WhatsApp</div>
-                    </div>
+						<input type="tel" class="form-control" id="C_whatsA" name="C_whatsA"
+							pattern="^\+?\d{10,15}$"
+							placeholder="+5491123456789" required
+							oninput="this.value = this.value.replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '')" /> <!-- Permite solo números y + .Solo deja un + si está al inicio del número.-->
+						<label for="C_whatsA">WhatsApp</label>
+						<div class="valid-tooltip">Campo válido</div>
+						<div class="invalid-tooltip">Es necesario poner el WhatsApp</div>
+					</div>
                     <div class="col-lg-6 form-floating">
                         <textarea class="form-control" id="C_mensaje" name="C_mensaje" minlength="10"
                             placeholder="Mensaje" required></textarea>
@@ -290,7 +291,7 @@
                         <div class="invalid-tooltip">Escriba al menos 10 caracteres</div>
                     </div>
                     <div class="col-lg-6 text-center">
-                        <a class="button-wrapperb btn">
+                        <button type="submit" class="button-wrapperb btn">
                             <span class="dotb dotb2-1"></span>
                             <span class="dotb dotb2-2"></span>
                             <span class="dotb dotb2-3"></span>
@@ -299,7 +300,7 @@
                             <span class="dotb dotb2-6"></span>
                             <span class="dotb dotb2-7"></span>
                             <span class="buttonE px-16 py-4 rounded-full uppercase contB3">Enviar<span>
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>

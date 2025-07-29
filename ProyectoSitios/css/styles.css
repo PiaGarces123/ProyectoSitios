@@ -1916,7 +1916,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            padding: 2rem;
+            padding: 3rem;
             background: 
                 radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(75, 0, 130, 0.1) 0%, transparent 50%);
@@ -2152,8 +2152,7 @@
             
             .carousel-slide {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 1.5rem;
+                gap: 1.5rem;                
             }
             
             .portfolio-section {
