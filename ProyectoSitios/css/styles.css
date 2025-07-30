@@ -619,7 +619,7 @@
     .footer-1 {
         background-color: rgb(9, 21, 63);
         width: 100%;
-        padding: 2rem 0;
+        padding: 1rem 0;
     }
     .footer-logo {
       width: 200px;
@@ -1791,8 +1791,14 @@
 
 /*Seccion de Trabajos*/
       /* Contenedor principal para controlar el layout */
-        .main-wrapper {
+       .serviciosDados {
+            background: linear-gradient(135deg, #030b2b 0%, #13133d 50%, #1b2d6d 100%);
+            overflow-x: hidden;
+            scrollbar-width: none;
             min-height: 100vh;
+        }
+        .main-wrapper {
+            min-height: auto;
             display: flex;
             flex-direction: column;
         }
@@ -1818,9 +1824,9 @@
             background: 
                 radial-gradient(ellipse at top, #1e0533 0%, #110a1f 50%, #000000 100%),
                 radial-gradient(ellipse at bottom, #2d1b69 0%, #0f0f23 50%, #000000 100%);
-            flex: 1;
-            min-height: 100vh;
-            padding: 2rem 0;
+            
+            min-height: auto;
+            padding: 0;
             position: relative;
             overflow-x: hidden;
             font-family: "Alumni Sans SC", sans-serif;
@@ -1872,7 +1878,7 @@
         }
         .section-header {
             text-align: center;
-            margin-bottom: 1rem;
+            
             position: relative;
         }
         .section-title {
@@ -1882,7 +1888,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0;
             text-shadow: 0 0 30px rgba(147, 112, 219, 0.5);
             animation: float 6s ease-in-out infinite;
             font-family: "Alumni Sans SC", sans-serif;
