@@ -1,4 +1,4 @@
- (function () {
+(function () {
   // Add corner decorations to all animation containers
   function addCornerDecorations() {
     document.querySelectorAll(".animation-container").forEach((container) => {
@@ -93,15 +93,33 @@ function setupOscillatingDots() {
   });
 })();
 
+/* INTEGRANTES - DATOS HARDCODEADOS */
+// Datos del equipo directamente en el código
+const teamData = [
+    {
+        image: "../assets/img/perfilGarcesBrocal.jpeg",
+        name: "Garces Brocal María P.",
+        specialty: "Frontend Developer",
+        info: "Actualmente me encuentro en el segundo año de la Tecnicatura Universitaria en Web en la UNSL. Tengo conocimientos en desarrollo frontend (HTML, CSS, JavaScript, JSON), programación en distintos lenguajes, usabilidad y diseño gráfico.",
+        linkedin: "https://linkedin.com/in/alexnebula"
+    },
+    {
+        image: "../assets/img/perfilPonce.jpeg",
+        name: "Ponce Santiago Ulises",
+        specialty: "Frontend Developer, Graphic Design",
+        info: "Trabajo con el paquete Adobe (Illustrator, Photoshop, entre otros) y tengo conocimientos en desarrollo frontend con HTML, CSS y JavaScript, lo que me permite integrar el diseño visual con entornos web de manera efectiva.",
+        linkedin: "https://linkedin.com/in/lunastellar"
+    }
+];
 
-
-/* INTEGRANTES*/
 // Función para crear las cards de los miembros
 function createMemberCards(data) {
     const teamGrid = document.getElementById('teamGrid');
+    if (!teamGrid) return; // Si no existe el elemento, no ejecutar
+    
     teamGrid.innerHTML = '';
 
-    data.team.forEach(member => {
+    data.forEach(member => {
         const card = document.createElement('div');
         card.className = 'member-card';
         
@@ -121,25 +139,10 @@ function createMemberCards(data) {
         
         teamGrid.appendChild(card);
     });
-}
 
-// Función para cargar el JSON externo
-async function loadTeamData() {
-    try {
-        const response = await fetch('../json/miembros.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        createMemberCards(data);
-    } catch (error) {
-        console.error('Error cargando miembros:', error);
-        document.getElementById('teamGrid').innerHTML = 
-            '<div class="loading">Error al cargar los datos del equipo.</div>';
-    }
-}
+  }
 
 // Inicializar cuando cargue el DOM
 document.addEventListener('DOMContentLoaded', () => {
-    loadTeamData();
+    createMemberCards(teamData);
 });
