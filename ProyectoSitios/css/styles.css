@@ -1444,6 +1444,7 @@
 /*Formulario Subir opinon*/
   .subirOp{
     background-color:  var(--background-blue);
+    padding-bottom: 2rem;
   }
 
   .form-container {
