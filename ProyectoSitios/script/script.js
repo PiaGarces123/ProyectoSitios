@@ -169,7 +169,7 @@ window.addEventListener('scroll', () => {
   ];
 
   const c2 = [
-    lerp(lilac[0], lilac[0], scrollPercent), // fijo, o podés interpolar con otro si querés
+    lerp(lilac[0], lilac[0], scrollPercent), 
     lerp(lilac[1], lilac[1], scrollPercent),
     lerp(lilac[2], lilac[2], scrollPercent)
   ];
