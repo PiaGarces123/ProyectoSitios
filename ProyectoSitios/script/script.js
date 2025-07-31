@@ -146,3 +146,58 @@ function createMemberCards(data) {
 document.addEventListener('DOMContentLoaded', () => {
     createMemberCards(teamData);
 });
+
+// Barra de scroll
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = scrollTop / docHeight; // de 0 a 1
+
+  // Interpolación lineal entre dos colores (de 0 a 255)
+  const lerp = (start, end, t) => Math.round(start + (end - start) * t);
+
+  // Colores originales
+  const white = [255, 255, 255];
+  const lilac = [195, 155, 211];
+  const purple = [142, 68, 173];
+
+  // Según el porcentaje de scroll, invertimos los colores
+  const c1 = [
+    lerp(white[0], purple[0], scrollPercent),
+    lerp(white[1], purple[1], scrollPercent),
+    lerp(white[2], purple[2], scrollPercent)
+  ];
+
+  const c2 = [
+    lerp(lilac[0], lilac[0], scrollPercent), // fijo, o podés interpolar con otro si querés
+    lerp(lilac[1], lilac[1], scrollPercent),
+    lerp(lilac[2], lilac[2], scrollPercent)
+  ];
+
+  const c3 = [
+    lerp(purple[0], white[0], scrollPercent),
+    lerp(purple[1], white[1], scrollPercent),
+    lerp(purple[2], white[2], scrollPercent)
+  ];
+
+  // Convertimos a string RGB
+  const rgb1 = `rgb(${c1.join(',')})`;
+  const rgb2 = `rgb(${c2.join(',')})`;
+  const rgb3 = `rgb(${c3.join(',')})`;
+
+  // Creamos el nuevo estilo
+  const style = document.createElement('style');
+  style.innerHTML = `
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, ${rgb1}, ${rgb2}, ${rgb3}) !important;
+      border-radius: 10px;
+    }
+  `;
+
+  // Reemplazamos el anterior
+  const existing = document.getElementById('dynamic-scroll-style');
+  if (existing) existing.remove();
+
+  style.id = 'dynamic-scroll-style';
+  document.head.appendChild(style);
+});
