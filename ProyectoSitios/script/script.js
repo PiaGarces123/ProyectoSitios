@@ -1,4 +1,4 @@
- (function () {
+(function () {
   // Add corner decorations to all animation containers
   function addCornerDecorations() {
     document.querySelectorAll(".animation-container").forEach((container) => {
@@ -93,15 +93,33 @@ function setupOscillatingDots() {
   });
 })();
 
+/* INTEGRANTES - DATOS HARDCODEADOS */
+// Datos del equipo directamente en el código
+const teamData = [
+    {
+        image: "../assets/img/perfilGarcesBrocal.jpeg",
+        name: "Garces Brocal María P.",
+        specialty: "Frontend Developer",
+        info: "Actualmente me encuentro en el segundo año de la Tecnicatura Universitaria en Web en la UNSL. Tengo conocimientos en desarrollo frontend (HTML, CSS, JavaScript, JSON), programación en distintos lenguajes, usabilidad y diseño gráfico.",
+        linkedin: "https://linkedin.com/in/alexnebula"
+    },
+    {
+        image: "../assets/img/perfilPonce.jpeg",
+        name: "Ponce Santiago Ulises",
+        specialty: "Frontend Developer, Graphic Design",
+        info: "Trabajo con el paquete Adobe (Illustrator, Photoshop, entre otros) y tengo conocimientos en desarrollo frontend con HTML, CSS y JavaScript, lo que me permite integrar el diseño visual con entornos web de manera efectiva.",
+        linkedin: "https://linkedin.com/in/lunastellar"
+    }
+];
 
-
-/* INTEGRANTES*/
 // Función para crear las cards de los miembros
 function createMemberCards(data) {
     const teamGrid = document.getElementById('teamGrid');
+    if (!teamGrid) return; // Si no existe el elemento, no ejecutar
+    
     teamGrid.innerHTML = '';
 
-    data.team.forEach(member => {
+    data.forEach(member => {
         const card = document.createElement('div');
         card.className = 'member-card';
         
@@ -121,25 +139,65 @@ function createMemberCards(data) {
         
         teamGrid.appendChild(card);
     });
-}
 
-// Función para cargar el JSON externo
-async function loadTeamData() {
-    try {
-        const response = await fetch('../json/miembros.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        createMemberCards(data);
-    } catch (error) {
-        console.error('Error cargando miembros:', error);
-        document.getElementById('teamGrid').innerHTML = 
-            '<div class="loading">Error al cargar los datos del equipo.</div>';
-    }
-}
+  }
 
 // Inicializar cuando cargue el DOM
 document.addEventListener('DOMContentLoaded', () => {
-    loadTeamData();
+    createMemberCards(teamData);
+});
+
+// Barra de scroll
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = scrollTop / docHeight; // de 0 a 1
+
+  // Interpolación lineal entre dos colores (de 0 a 255)
+  const lerp = (start, end, t) => Math.round(start + (end - start) * t);
+
+  // Colores originales
+  const white = [255, 255, 255];
+  const lilac = [195, 155, 211];
+  const purple = [142, 68, 173];
+
+  // Según el porcentaje de scroll, invertimos los colores
+  const c1 = [
+    lerp(white[0], purple[0], scrollPercent),
+    lerp(white[1], purple[1], scrollPercent),
+    lerp(white[2], purple[2], scrollPercent)
+  ];
+
+  const c2 = [
+    lerp(lilac[0], lilac[0], scrollPercent), 
+    lerp(lilac[1], lilac[1], scrollPercent),
+    lerp(lilac[2], lilac[2], scrollPercent)
+  ];
+
+  const c3 = [
+    lerp(purple[0], white[0], scrollPercent),
+    lerp(purple[1], white[1], scrollPercent),
+    lerp(purple[2], white[2], scrollPercent)
+  ];
+
+  // Convertimos a string RGB
+  const rgb1 = `rgb(${c1.join(',')})`;
+  const rgb2 = `rgb(${c2.join(',')})`;
+  const rgb3 = `rgb(${c3.join(',')})`;
+
+  // Creamos el nuevo estilo
+  const style = document.createElement('style');
+  style.innerHTML = `
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, ${rgb1}, ${rgb2}, ${rgb3}) !important;
+      border-radius: 10px;
+    }
+  `;
+
+  // Reemplazamos el anterior
+  const existing = document.getElementById('dynamic-scroll-style');
+  if (existing) existing.remove();
+
+  style.id = 'dynamic-scroll-style';
+  document.head.appendChild(style);
 });
