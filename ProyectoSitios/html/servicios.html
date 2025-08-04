@@ -76,6 +76,52 @@
             
             <div class="services-grid" id="servicesGrid">
             </div>
+
+            <!-- Modal -->
+            <div id="serviceModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <div class="modal-icon" id="modalIcon"></div>
+                        <h2 class="modal-title" id="modalTitle"></h2>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-description" id="modalDescription"></p>
+                        <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.5rem;">Características principales:</h3>
+                        <ul class="modal-features" id="modalFeatures"></ul>
+                         <!-- Info adicional -->
+                        <div class="modal-info-grid">
+                            <div class="info-item">
+                                <h4>💰 Precio</h4>
+                                <p id="modalPrice"></p>
+                            </div>
+                            <div class="info-item">
+                                <h4>⏱️ Duración</h4>
+                                <p id="modalDuration"></p>
+                            </div>
+                            <div class="info-item">
+                                <h4>📂 Categoría</h4>
+                                <p id="modalCategory"></p>
+                            </div>
+                        </div>
+
+                        <h3 style="color: #667eea; margin: 30px 0 20px 0; font-size: 1.5rem;">✨ Características principales:</h3>
+                        <ul class="modal-features" id="modalFeatures"></ul>
+
+                        <h3 style="color: #667eea; margin: 30px 0 20px 0; font-size: 1.5rem;">🎯 Beneficios clave:</h3>
+                        <ul class="modal-benefits" id="modalBenefits"></ul>
+
+                        <h3 style="color: #667eea; margin: 30px 0 20px 0; font-size: 1.5rem;">🔄 Proceso de trabajo:</h3>
+                        <div class="modal-process" id="modalProcess"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="contact-button" onclick="contactService()">
+                            ¡Quiero este servicio!
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 
