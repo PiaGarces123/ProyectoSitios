@@ -275,13 +275,12 @@
                         <div class="invalid-tooltip">Es necesario poner el E-mail</div>
                     </div>
                     <div class="col-lg-6 form-floating">
-						<input type="tel" class="form-control" id="C_whatsA" name="C_whatsA"
-							pattern="^\+?\d{10,15}$"
-							placeholder="+5491123456789" required
-							oninput="this.value = this.value.replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '')" /> <!-- Permite solo números y + .Solo deja un + si está al inicio del número.-->
-						<label for="C_whatsA">WhatsApp</label>
+						<input type="text" class="form-control" id="C_asunto" name="C_asunto"
+							pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]{2,}(?: [A-Za-zÁÉÍÓÚÑáéíóúñ]+)*$"
+							placeholder="Asunto" required />
+						<label for="C_asunto">Asunto</label>
 						<div class="valid-tooltip">Campo válido</div>
-						<div class="invalid-tooltip">Es necesario poner el WhatsApp</div>
+						<div class="invalid-tooltip">Es necesario poner el Asunto</div>
 					</div>
                     <div class="col-lg-6 form-floating">
                         <textarea class="form-control" id="C_mensaje" name="C_mensaje" minlength="10"
@@ -401,6 +400,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="../script/script.js"></script>
+    
 </body>
 </html>

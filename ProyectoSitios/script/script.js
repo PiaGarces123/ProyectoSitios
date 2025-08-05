@@ -201,3 +201,170 @@ window.addEventListener('scroll', () => {
   style.id = 'dynamic-scroll-style';
   document.head.appendChild(style);
 });
+
+
+//-------------------------CONTACTO-------------------------
+
+// ==========  EMAILJS  ==========
+
+// Configuración EmailJS - Reemplaza con tus datos reales
+const EMAIL_CONFIG = {
+    serviceID: 'SWS_mailContact',      // cuenta EmailJS
+    templateID: 'template_ksmhqub',     // template EmailJS
+    publicKey: 'OubueI9IFWFPnx2oM'        // clave pública EmailJS
+};
+
+// Función para enviar por EMAIL usando EmailJS
+function enviarPorEmail(formData) {
+    // Inicializar EmailJS
+    emailjs.init(EMAIL_CONFIG.publicKey);
+    
+    // Preparar los datos del template
+    const templateParams = {
+        from_name: formData.get('C_name'),
+        from_email: formData.get('C_email'),
+        from_whatsapp: formData.get('C_whatsA'),
+        message: formData.get('C_mensaje'),
+        fecha: new Date().toLocaleString('es-ES', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    };
+    
+    // Enviar email
+    return emailjs.send(
+        EMAIL_CONFIG.serviceID,
+        EMAIL_CONFIG.templateID,
+        templateParams
+    );
+}
+
+// ========== IMPLEMENTACIONES DE ENVÍO ==========
+
+// OPCIÓN A: Solo por Email
+function enviarSoloEmail(formData) {
+    // Usando EmailJS
+    enviarPorEmail(formData)
+        .then(() => {
+            mostrarMensajeExito('¡Email enviado correctamente! Te responderemos pronto.');
+            limpiarFormulario();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            mostrarMensajeError('Error al enviar el email. Inténtalo de nuevo.');
+        });
+
+}
+// ========== FUNCIONES DE UI ==========
+
+function mostrarEstadoEnviando() {
+    const btn = document.querySelector('#formularioContacto button[type="submit"]');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Enviando...
+        `;
+    }
+}
+
+function mostrarMensajeExito(mensaje) {
+    mostrarNotificacion(mensaje, 'success', '✅');
+    restaurarBoton();
+}
+
+function mostrarMensajeError(mensaje) {
+    mostrarNotificacion(mensaje, 'danger', '❌');
+    restaurarBoton();
+}
+
+function mostrarNotificacion(mensaje, tipo, icono) {
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${tipo} position-fixed`;
+    notification.style.cssText = `
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        min-width: 350px;
+        animation: slideIn 0.3s ease-out;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+    
+    notification.innerHTML = `
+        <div class="d-flex align-items-center">
+            <div style="margin-right: 10px; font-size: 1.2em;">${icono}</div>
+            <div>
+                <strong>${mensaje}</strong>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-in';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+function restaurarBoton() {
+    const btn = document.querySelector('#formularioContacto button[type="submit"]');
+    if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = `
+            <span class="dotb dotb2-1"></span>
+            <span class="dotb dotb2-2"></span>
+            <span class="dotb dotb2-3"></span>
+            <span class="dotb dotb2-4"></span>
+            <span class="dotb dotb2-5"></span>
+            <span class="dotb dotb2-6"></span>
+            <span class="dotb dotb2-7"></span>
+            <span class="buttonE px-16 py-4 rounded-full uppercase contB3">Enviar</span>
+        `;
+    }
+}
+
+function limpiarFormulario() {
+    const form = document.getElementById('formularioContacto');
+    setTimeout(() => {
+        form.reset();
+        form.classList.remove('was-validated');
+        form.querySelectorAll('.form-control').forEach(input => {
+            input.classList.remove('is-valid', 'is-invalid', 'has-content');
+        });
+    }, 2000);
+}
+
+// Mantener las funciones originales
+function crearMensajeWhatsApp(nombre, email, whatsapp, mensaje) {
+    const fechaHora = new Date().toLocaleString('es-ES', {
+        timeZone: 'America/Argentina/Buenos_Aires',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+    
+    return `🌟 *NUEVO CONTACTO DESDE WEB* 🌟
+
+👤 *Nombre:* ${nombre}
+📧 *Email:* ${email}
+📱 *WhatsApp:* ${whatsapp}
+
+💬 *Mensaje:*
+${mensaje}
+
+📅 *Fecha y hora:* ${fechaHora}
+
+---
+_Mensaje enviado desde el formulario de contacto web_`;
+}
