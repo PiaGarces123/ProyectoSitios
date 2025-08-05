@@ -501,7 +501,8 @@
             }
         }
 
-/* Preguntas frecuentes */
+/* Preguntas frecuentes CORREGIR EN LAPTOP*/
+
     #preguntas {
       background: #A2AFE2;
       background: linear-gradient(180deg, rgba(162, 175, 226, 1) 2%, rgba(85, 85, 133, 1) 20%, rgba(31, 31, 84, 1) 38%, rgba(3, 11, 43, 1) 68%);
@@ -2544,6 +2545,10 @@
         .cta-button {
             font-size: 1.4rem;
         }
+        /*Onda*/
+        .onda {
+            bottom: 5px;
+        }
 
       /*Seccion de Trabajos   revisaaaaaaaaaaaaaaaaaaaaa*/
         .trabajos {
@@ -2573,26 +2578,33 @@
               font-weight: 600;
           }
 
-        /* Preguntas frecuentes*/
-          #preguntas .accordion-item {
-            width: 150%;
-          }
-          #preguntas .accordion-button {
-              font-size: 1.5rem;
-              margin-left: -200px;
-              padding-left: 5rem;
-              padding-right: 5rem;
-          }
-          #preguntas .accordion-header {
-              margin-bottom: 0.5rem;
-          }
-          #preguntas .accordion-body {
-              margin-left: -200px;
-              padding-top: 25px;
-              padding-bottom: 25px; 
-              width: 100%;        
-          }
-          
+       /* Preguntas frecuentes */
+        #preguntas .accordion-item {
+            width: 100%;
+        }
+
+        #preguntas .accordion-button {
+            font-size: 1.5rem;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            margin: 0 auto;
+            max-width: 900px; /* opcional para limitar el ancho en pantallas grandes */
+        }
+
+        #preguntas .accordion-header {
+            margin-bottom: 0.5rem;
+        }
+
+        #preguntas .accordion-body {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            width: 100%;
+            margin: 0 auto;
+            max-width: 900px; /* igual que el botón */
+        }
+
         /* Contacto */
           .contacto p {
             font-size: 1.4rem;

@@ -101,7 +101,7 @@ const teamData = [
         name: "Garces Brocal María P.",
         specialty: "Frontend Developer",
         info: "Actualmente me encuentro en el segundo año de la Tecnicatura Universitaria en Web en la UNSL. Tengo conocimientos en desarrollo frontend (HTML, CSS, JavaScript, JSON), programación en distintos lenguajes, usabilidad y diseño gráfico.",
-        linkedin: "https://linkedin.com/in/alexnebula"
+        linkedin: "https://www.linkedin.com/in/maría-pía-garces-brocal"
     },
     {
         image: "../assets/img/perfilPonce.jpeg",
