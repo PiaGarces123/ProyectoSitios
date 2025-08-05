@@ -155,7 +155,7 @@
         overflow: hidden;
         margin: 0;
         padding: 0;
-        background: transparent; /* o ninguno */
+        background: transparent; 
         color: #fff;
         text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         min-height: 700px;
@@ -2072,11 +2072,11 @@
        .serviciosDados {
             background: linear-gradient(135deg, #030b2b 0%, #13133d 50%, #1b2d6d 100%);
             overflow-x: hidden;
-            scrollbar-width: none;
+
             min-height: 100vh;
         }
         .main-wrapper {
-            min-height: auto;
+            
             display: flex;
             flex-direction: column;
         }
@@ -2103,7 +2103,7 @@
                 radial-gradient(ellipse at top, #1e0533 0%, #110a1f 50%, #000000 100%),
                 radial-gradient(ellipse at bottom, #2d1b69 0%, #0f0f23 50%, #000000 100%);
             
-            min-height: auto;
+
             padding: 0;
             position: relative;
             overflow-x: hidden;
@@ -2183,7 +2183,7 @@
         .carousel-container {
             position: relative;
             margin-top: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
         .carousel-wrapper {
             overflow: hidden;
@@ -2470,9 +2470,13 @@
           }   
           
       /* Banner */
-          .containerB {
+        .containerB {
               height: 1050px;
           }      
+        section.banner {/*Video*/
+            min-height: 97vh;
+        }
+    
       /*Seccion Info Uno*/
           .infoC{
             font-size: 1.2rem;
@@ -2546,7 +2550,7 @@
             margin-left: calc(-50vw + 50%);
             min-height: 100vh;
         } 
-
+        
         /* Integrantes */
           .containerE {
               max-width: 2000px;
