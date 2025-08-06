@@ -261,7 +261,8 @@
                     <div class="col-lg-6 form-floating">
                         <input type="text" class="form-control" id="C_name" name="C_name"
                             pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]{2,}(?: [A-Za-zÁÉÍÓÚÑáéíóúñ]+)*$"
-                            placeholder="Nombre" minlength="3" required />
+                            placeholder="Nombre" minlength="3" required
+                            autocomplete="off" />
                         <label for="C_name">Nombre</label>
                         <div class="valid-tooltip">Campo válido</div>
                         <div class="invalid-tooltip">Es necesario poner el Nombre</div>
@@ -277,14 +278,16 @@
                     <div class="col-lg-6 form-floating">
 						<input type="text" class="form-control" id="C_asunto" name="C_asunto"
 							pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]{2,}(?: [A-Za-zÁÉÍÓÚÑáéíóúñ]+)*$"
-							placeholder="Asunto" required />
+							placeholder="Asunto" required
+                            autocomplete="off" />
 						<label for="C_asunto">Asunto</label>
 						<div class="valid-tooltip">Campo válido</div>
 						<div class="invalid-tooltip">Es necesario poner el Asunto</div>
 					</div>
                     <div class="col-lg-6 form-floating">
                         <textarea class="form-control" id="C_mensaje" name="C_mensaje" minlength="10"
-                            placeholder="Mensaje" required></textarea>
+                            placeholder="Mensaje" required
+                            autocomplete="off"></textarea>
                         <label for="C_mensaje">Mensaje</label>
                         <div class="valid-tooltip">Campo válido</div>
                         <div class="invalid-tooltip">Escriba al menos 10 caracteres</div>
