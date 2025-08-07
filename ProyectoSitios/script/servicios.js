@@ -227,10 +227,10 @@
 
         // Función para contactar servicio
         function contactService() {
-            if (currentService) {
-                alert(`¡Gracias por tu interés en ${currentService.title}! Te contactaremos pronto para explorar las posibilidades.`);
-                closeModal();
-            }
+            closeModal(); // Cierra el modal (si usás una función que lo cierra)
+
+            // Redirige a la sección de contacto
+            window.location.href = `./index.html#contact?servicio=${encodeURIComponent(currentService.title)}`;
         }
 
         // Event listeners para el modal
@@ -320,3 +320,26 @@
         style.id = 'dynamic-scroll-style';
         document.head.appendChild(style);
         });
+// Función mejorada para contactar sobre un servicio específico
+function contactService() {
+    closeModal(); // Cierra el modal
+    
+    // Redirige a la sección de contacto con scroll suave
+    const contactSection = document.getElementById('contact') || document.querySelector('.contacto');
+    if (contactSection) {
+        contactSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+    } else {
+        // Si no encuentra la sección, usa el método de hash
+        window.location.href = "./index.html#contact";
+    }
+    
+    // Pre-llena el formulario después de un breve delay
+    setTimeout(() => {
+        if (selectedService) {
+            presetFormWithService(selectedService);
+        }
+    }, 500); // Tiempo suficiente para que termine el scroll
+}

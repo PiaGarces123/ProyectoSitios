@@ -559,6 +559,56 @@
 
 
 /* Contacto */
+
+    
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .modal-info-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    
+    .process-step {
+        padding: 12px;
+    }
+    
+    .modal-section-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Indicador visual para campos pre-llenados */
+.form-floating .form-control.prefilled {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+.form-floating .form-control.prefilled + label {
+    color: #667eea;
+    font-weight: 500;
+}
+
+
+/* Animación para cuando se pre-llena el formulario */
+.form-control.auto-filled {
+    animation: highlightField 2s ease-in-out;
+    border-color: #667eea;
+}
+
+@keyframes highlightField {
+    0% { 
+        background-color: rgba(102, 126, 234, 0.1);
+        border-color: #667eea;
+    }
+    50% { 
+        background-color: rgba(102, 126, 234, 0.2);
+        border-color: #667eea;
+    }
+    100% { 
+        background-color: transparent;
+        border-color: #ced4da;
+    }
+}
+
     .contacto {
       color: #fff;
       padding: 6rem 0;
