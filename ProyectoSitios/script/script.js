@@ -250,7 +250,7 @@ function enviarSoloEmail(formData) {
     // Usando EmailJS
     enviarPorEmail(formData)
         .then(() => {
-            mostrarMensajeExito('¡Email enviado correctamente! Te responderemos pronto.');
+            mostrarMensajeExito('¡Email enviado correctamente! Pronto nos pondremos en contacto.');
             limpiarFormulario();
         })
         .catch((error) => {
@@ -368,3 +368,23 @@ ${mensaje}
 ---
 _Mensaje enviado desde el formulario de contacto web_`;
 }
+
+/*Capturación del Envío del Formulario*/
+document.addEventListener('DOMContentLoaded', () => {
+    const formulario = document.getElementById('formularioContacto');
+
+    if (formulario) {
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault(); // evita que recargue la página
+            event.stopPropagation();
+
+            // Mostrar spinner
+            mostrarEstadoEnviando();
+
+            const formData = new FormData(formulario);
+            
+            // Enviar por EmailJS
+            enviarSoloEmail(formData);
+        });
+    }
+});

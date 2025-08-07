@@ -1374,7 +1374,7 @@
       position: relative;
       height: 10rem;
       overflow: hidden;
-      background-color:  var(--background-blue); 
+      background: linear-gradient(180deg, rgb(3, 11, 43, 0.8) 0%, rgba(3, 11, 43, 0.9) 20%, rgba(3, 11, 43) 60%);
       z-index: 1;
   }
 
@@ -1460,7 +1460,7 @@
 /*Formulario Subir opinon*/
   .subirOp{
     background-color:  var(--background-blue);
-    padding-bottom: 2rem;
+    padding-bottom: 8rem;
   }
 
   .form-container {
