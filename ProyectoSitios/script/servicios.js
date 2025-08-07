@@ -200,7 +200,7 @@
                     `<li>${benefit}</li>`
                 ).join('');
             } else {
-                benefitsContainer.innerHTML = '<li>Beneficios personalizados según tu proyecto</li>';
+                benefitsContainer.innerHTML = '<li>Beneficios personalizados según el proyecto</li>';
             }
             
             // Actualizar proceso
@@ -210,7 +210,7 @@
                     `<div class="process-step" data-step="${index + 1}">${step}</div>`
                 ).join('');
             } else {
-                processContainer.innerHTML = '<div class="process-step" data-step="1">Proceso personalizado según tus necesidades</div>';
+                processContainer.innerHTML = '<div class="process-step" data-step="1">Proceso personalizado según las necesidades</div>';
             }
             
             // Mostrar modal

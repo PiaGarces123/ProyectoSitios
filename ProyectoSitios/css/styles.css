@@ -863,8 +863,9 @@
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 1.2px;
-      user-select: none;
+      
       -webkit-user-select: none;
+      user-select: none;
     }
 
     #footer-2 a {
@@ -1600,6 +1601,12 @@
             min-height: 100vh;
             overflow-x: hidden;
             
+        }
+
+        .modal-section-title {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
 
         .stars {
