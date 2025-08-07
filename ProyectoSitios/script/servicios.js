@@ -320,26 +320,192 @@
         style.id = 'dynamic-scroll-style';
         document.head.appendChild(style);
         });
-// Función mejorada para contactar sobre un servicio específico
+
+
+
+// ========================= SERVICIOS.JS =========================
+// Este archivo maneja todo lo relacionado con la visualización y selección de servicios
+
+// Variable global para almacenar el servicio seleccionado
+let selectedService = null;
+
+// Función para abrir el modal de servicio
+function openServiceModal(serviceId) {
+    const service = servicesData.services.find(s => s.id === serviceId);
+    if (!service) return;
+    
+    // Guardar el servicio seleccionado globalmente
+    selectedService = service;
+    
+    const modal = document.getElementById('serviceModal');
+    
+    // Rellenar contenido del modal
+    document.getElementById('modalIcon').textContent = service.icon;
+    document.getElementById('modalTitle').textContent = service.title;
+    document.getElementById('modalDescription').textContent = service.description;
+    
+    // Rellenar características
+    const featuresContainer = document.getElementById('modalFeatures');
+    featuresContainer.innerHTML = '';
+    if (service.features) {
+        service.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresContainer.appendChild(li);
+        });
+    }
+    
+    // Rellenar información adicional (solo si existe)
+    if (service.price) {
+        document.getElementById('modalPrice').textContent = service.price;
+    }
+    if (service.duration) {
+        document.getElementById('modalDuration').textContent = service.duration;
+    }
+    if (service.category) {
+        document.getElementById('modalCategory').textContent = service.category;
+    }
+    
+    // Rellenar beneficios (solo si existen)
+    if (service.benefits) {
+        const benefitsContainer = document.getElementById('modalBenefits');
+        benefitsContainer.innerHTML = '';
+        service.benefits.forEach(benefit => {
+            const li = document.createElement('li');
+            li.textContent = benefit;
+            benefitsContainer.appendChild(li);
+        });
+    }
+    
+    // Rellenar proceso (solo si existe)
+    if (service.process) {
+        const processContainer = document.getElementById('modalProcess');
+        processContainer.innerHTML = '';
+        service.process.forEach((step, index) => {
+            const div = document.createElement('div');
+            div.className = 'process-step';
+            div.innerHTML = `<strong>Paso ${index + 1}:</strong> ${step}`;
+            processContainer.appendChild(div);
+        });
+    }
+    
+    modal.style.display = 'block';
+}
+
+// Función para contactar sobre un servicio específico
 function contactService() {
     closeModal(); // Cierra el modal
     
-    // Redirige a la sección de contacto con scroll suave
-    const contactSection = document.getElementById('contact') || document.querySelector('.contacto');
-    if (contactSection) {
-        contactSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-        });
-    } else {
-        // Si no encuentra la sección, usa el método de hash
-        window.location.href = "./index.html#contact";
+    if (selectedService) {
+        // Guardar el servicio en localStorage para pasarlo entre páginas
+        localStorage.setItem('selectedService', JSON.stringify(selectedService));
+        
+        // Verificar si estamos en servicios.html o index.html
+        const currentPage = window.location.pathname;
+        
+        if (currentPage.includes('servicios.html')) {
+            // Si estamos en servicios.html, redirigir a index.html con hash
+            window.location.href = "./index.html#contact";
+        } else {
+            // Si estamos en index.html, hacer scroll a la sección de contacto
+            const contactSection = document.getElementById('contact') || document.querySelector('.contacto');
+            if (contactSection) {
+                contactSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+                
+                // Pre-llenar el formulario después del scroll
+                setTimeout(() => {
+                    presetFormWithService(selectedService);
+                }, 500);
+            }
+        }
+    }
+}
+
+// Función para cerrar el modal
+function closeModal() {
+    const modal = document.getElementById('serviceModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Función para mostrar notificaciones sutiles
+function showNotification(message, type = 'info') {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.className = `custom-notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">
+                ${type === 'success' ? '✓' : type === 'error' ? '✗' : 'ℹ'}
+            </span>
+            <span class="notification-message">${message}</span>
+        </div>
+    `;
+    
+    // Añadir estilos inline si no están definidos en CSS
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#F44336' : '#2196F3'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        max-width: 350px;
+        font-size: 14px;
+    `;
+    
+    // Añadir al DOM
+    document.body.appendChild(notification);
+    
+    // Mostrar con animación
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Ocultar y remover después de 4 segundos
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// Event listeners para el modal
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('serviceModal');
+    const closeBtn = document.querySelector('.close');
+    
+    // Cerrar modal al hacer clic en X
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
     }
     
-    // Pre-llena el formulario después de un breve delay
-    setTimeout(() => {
-        if (selectedService) {
-            presetFormWithService(selectedService);
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
         }
-    }, 500); // Tiempo suficiente para que termine el scroll
-}
+    });
+    
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+});
